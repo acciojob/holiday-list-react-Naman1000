@@ -39,7 +39,10 @@ const App = () => {
       const IndianPlaces = cityList.filter(place => place.country == 'India')
 
           <ol>
-          <li id={IndianPlaces.map(place,index)=>`location${index+1}`}>place</li>
+          {IndianPlaces.map((place,index)=>(
+              
+          <li key={`location${index+1}`}>{place}</li>
+            ))}
           </ol>
           
     </div>
