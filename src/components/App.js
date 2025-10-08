@@ -34,21 +34,26 @@ const App = () => {
     ]
 
 
-    const IndianPlaces = cityList.filter((place) => place.country == 'India');
+    const [indianCities, setIndianCities] = useState([]);
+
+  // ✅ Filter inside useEffect (runs only once)
+  useEffect(() => {
+    const filteredCities = cityList.filter(
+      (place) => place.country === "India"
+    );
+    setIndianCities(filteredCities);
+  }, []);
 
   return (
     <div id="main">
-               {/* Do not remove the main div */}
-      
-          <ol>
-          {IndianPlaces.map((place, index) => (
-              
+      {/* Do not remove the main div */}
+      <ol key="relativeList">
+        {indianCities.map((place, index) => (
           <li key={`location${index + 1}`}>{place.name}</li>
-            ))}
-          </ol>
-          
+        ))}
+      </ol>
     </div>
-  )
+  );
 }
 
 export default App
